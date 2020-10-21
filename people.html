@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구세군</title>
+    <link href="css/people_style.css" type="text/css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            mobile_menu();
+        });
+
+        function mobile_menu() {
+            /* 변수 선언 */
+            var $menu = null;
+            var $left_gnb = null; // 영역 전체
+            var $depth1_wrap = null;
+            var $depth1 = null;
+            var $depth1_btn = null;
+
+            /* 시작 함수 */
+            function start() {
+                init();
+                init_event();
+            }
+            /* 변수 초기화 함수 */
+            function init() {
+                $menu = $('.menu2');
+                $left_gnb = $('.left_gnbWrap'); // 영역 전체
+                $depth1_wrap = $('.left_gnb>li');
+                $depth1 = $depth1_wrap.children('ul');
+                $depth1_btn = $depth1_wrap.children('a');
+            }
+            /* 이벤트 함수 */
+            function init_event() {
+
+                /* 모바일 메뉴 버튼 클릭했을때 모바일 메뉴영역 나오게 하기 */
+                $menu.click(function(event) {
+                    event.preventDefault();
+                    $left_gnb.addClass('on');
+                });
+
+                /* x버튼 눌렀을때 모바일 메뉴 닫기 */
+                $('.close').click(function(event) {
+                    event.preventDefault();
+
+                    $left_gnb.removeClass('on');
+
+                    // x버튼 누르면 시간차 약간두고 소메뉴 닫히게 하기
+                    setTimeout(function() {
+                        $depth1_btn.removeClass('on');
+                        $depth1.slideUp();
+                    }, 300)
+                });
+
+                /* depth1의 각메뉴 클릭시 depth2 나오게 하기 */
+                $depth1_btn.click(function(event) {
+                    event.preventDefault();
+                    var $this = $(this);
+                    var $this_ul = $this.siblings('ul');
+
+                    var check = $this.hasClass('on');
+                    if (check) {
+                        $this.removeClass('on');
+                        $this_ul.stop(true, true).slideUp();
+                    } else {
+                        $depth1_btn.removeClass('on');
+                        $depth1.stop().slideUp();
+                        $this.addClass('on');
+                        $this_ul.stop(true, true).slideDown();
+                    }
+                });
+
+                /* 디바이스 크기 변경시 모바일 메뉴영역 숨기기 */
+                $(window).resize(function() {
+                    $left_gnb.removeClass('on');
+                });
+            }
+
+            start(); // 시작 호출
+        }
+    </script>
+
+
+</head>
+
+<body>
+    <div id="wrap">
+        <!--상단-->
+        <header id="header">
+            <div class="header_in">
+                <div class="header_top">
+                    <!--로고-->
+                    <h1 class="logo">
+                        <a href="index.html"><img src="images/logo.png" class="pclogo">
+                            <img src="images/mobile_logo.png" class="m_logo"></a>
+                    </h1>
+                    <!--상단 메뉴-->
+                    <nav class="main_nav">
+                        <ul>
+                            <li><a href="aboutus.html">ABOUT US</a>
+                                <ul class="global">
+                                    <li><a href="aboutus.html">- Who We Are</a></li>
+                                    <li><a href="aboutus.html">- History</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="campaign.html">PARTICIPATION</a>
+                                <ul class="global">
+                                    <li><a href="campaign.html">- 국내기부</a></li>
+                                    <li><a href="campaign.html">- 해외기부</a></li>
+                                    <li><a href="campaign.html">- 캠페인기부</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="people.html">GOOD-PEOPLE</a>
+                                <ul class="global">
+                                    <li><a href="people.html">- 사관/병사</a></li>
+                                    <li><a href="people.html">- 함께하는사람들</a></li>
+                                    <li><a href="people.html">- 홍보대사/자문위원</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="sotry.html">GOOD-STORY</a>
+                                <ul class="global">
+                                    <li><a href="sotry.html">- 후원소식</a></li>
+                                    <li><a href="sotry.html">- 후원절차보고</a></li>
+                                    <li><a href="sotry.html">- 경영보고</a></li>
+                                    <li><a href="sotry.html">- 윤리경영</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#"><span>LOG-IN</span></a></li>
+                            <li><a href="#"><span class="eng_btn">ENGLISH</span></a></li>
+                        </ul>
+                    </nav>
+                    <!--mobile_menu-->
+                    <div class="mobile_menu">
+                        <div class="menu2">
+                            <a href="#"></a>
+                        </div>
+                        <nav class="left_gnbWrap">
+                            <a href="#" class="close"></a>
+                            <ul class="left_gnb">
+                                <li>
+                                    <a href="#">ABOUTY US</a>
+                                    <ul>
+                                        <li><a href="aboutus.html">Who We Are</a></li>
+                                        <li><a href="aboutus.html">History</a></li>
+
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">PARTICIPATION</a>
+                                    <ul>
+                                        <li><a href="campaign.html">국내기부</a></li>
+                                        <li><a href="campaign.html">해외기부</a></li>
+                                        <li><a href="campaign.html">캠페인기부</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">GOOD-PEOPLE</a>
+                                    <ul>
+                                        <li><a href="people.html">사관/병사</a></li>
+                                        <li><a href="people.html">함께하는사람들</a></li>
+                                        <li><a href="people.html">홍보대사/자문위원</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">GOOD-STORY</a>
+                                    <ul>
+                                        <li><a href="sotry.html">후원소식</a></li>
+                                        <li><a href="sotry.html">후원절차보고</a></li>
+                                        <li><a href="sotry.html">경영보고</a></li>
+                                        <li><a href="sotry.html">윤리경영</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <!--이미지 텍스트-->
+                <div class="img_text">
+                    <div class="img_one"></div>
+                    <h2>GOOD<br>
+                        PEOPLE</h2>
+                </div>
+            </div>
+        </header>
+        <!--컨텐츠-->
+        <main id="contents">
+            <!--퀵메뉴-->
+            <section id="q_mn">
+                <div class="q_mn_in">
+                    <ul class="homg_btn">
+                        <li><a href="index.html"><img src="images/home.png"></a></li>
+                        <li class="q_one"><a href="people.html">GOOD-PEOPLE<i><img src="images/triangle.png" class="red_btn1"></i>
+                            </a>
+                            <ul class="q_sub_mn1">
+                                <li><a href="aboutus.html">ABOUT US</a></li>
+                                <li><a href="campaign.html">PARTICIPATION</a></li>
+                                <li><a href="people.html">GOOD-PEOPLE</a></li>
+                                <li><a href="sotry.html">GOOD-STORY</a></li>
+                            </ul>
+                        </li>
+                        <li class="q_two"><a href="#"><span>함께하는사람들</span><i><img src="images/triangle.png" class="red_btn2"></i></a>
+                            <ul class="q_sub_mn2">
+                                <li><a href="#">사관/병사</a></li>
+                                <li><a href="#">함께하는사람들</a></li>
+                                <li><a href="#">홍보대사/자문위원</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <!--좋은사람들-->
+            <section id="people">
+                <div class="people_h">
+                    <h2>WITH LOVE & WITH YOU </h2>
+                    <p>생명의 소중히 여기는 마음으로 이 세상을 더욱 환하게 만들어 갑니다.<br>좋은 사람들이 함께 모여 세상을 밝히는 힘,<br>우리는 구세군입니다.</p>
+                </div>
+                <div class="people_list">
+                    <ul>
+                        <!--                       김민지-->
+                        <li>
+                            <a href="#">
+                                <div class="people_img1 auto">
+                                </div>
+                                <span>김민지</span>
+                                <p>의료봉사팀</p>
+                            </a>
+                        </li>
+                        <!--                        하리-->
+                        <li>
+                            <a href="#">
+                                <div class="people_img2 auto">
+                                </div>
+                                <span>하리</span>
+                                <p>가수겸배우</p>
+                            </a>
+                        </li>
+                        <!--                      신봉숙  -->
+                        <li>
+                            <a href="#">
+                                <div class="people_img3 auto">
+                                </div>
+                                <span>신봉숙</span>
+                                <p>작가</p>
+                            </a>
+                        </li>
+                        <!--                        권준민-->
+                        <li>
+                            <a href="#">
+                                <div class="people_img4 auto">
+                                </div>
+                                <span>권준민</span>
+                                <p>모델</p>
+                            </a>
+                        </li>
+                        <!--                        유호철-->
+                        <li>
+                            <a href="#">
+                                <div class="people_img5 auto">
+                                </div>
+                                <span>유호철</span>
+                                <p>직업군인</p>
+                            </a>
+                        </li>
+                        <!--                        윤정아-->
+                        <li>
+                            <a href="#">
+                                <div class="people_img6 auto">
+                                </div>
+                                <span>윤정아</span>
+                                <p>피팅모델</p>
+                            </a>
+                        </li>
+                        <!--                        황도원-->
+                        <li>
+                            <a href="#">
+                                <div class="people_img7 auto">
+                                </div>
+                                <span>황도원</span>
+                                <p>강사</p>
+                            </a>
+                        </li>
+                        <!--                        홍민우-->
+                        <li>
+                            <a href="#">
+                                <div class="people_img8 auto">
+                                </div>
+                                <span>홍민우</span>
+                                <p>모델</p>
+                            </a>
+                        </li>
+                        <!--                        유지희-->
+                        <li>
+                            <a href="#">
+                                <div class="people_img9 auto">
+                                </div>
+                                <span>유지희</span>
+                                <p>대학생</p>
+                            </a>
+                        </li>
+                        <!--                        김석종-->
+                        <li>
+                            <a href="#">
+                                <div class="people_img10 auto">
+                                </div>
+                                <span>김석종</span>
+                                <p>의사</p>
+                            </a>
+                        </li>
+                        <!--                        오선미-->
+                        <li>
+                            <a href="#">
+                                <div class="people_img11 auto">
+                                </div>
+                                <span>오선미</span>
+                                <p>선생님</p>
+                            </a>
+                        </li>
+                        <!--                        박두진-->
+                        <li>
+                            <a href="#">
+                                <div class="people_img12 auto">
+                                </div>
+                                <span>박두진</span>
+                                <p>운동선수</p>
+                            </a>
+                        </li>
+                        <!--                        도민영-->
+                        <li>
+                            <a href="#">
+                                <div class="people_img13 auto">
+                                </div>
+                                <span>도민영</span>
+                                <p>작가</p>
+                            </a>
+                        </li>
+                        <!--                        이지아-->
+                        <li>
+                            <a href="#">
+                                <div class="people_img14 auto">
+                                </div>
+                                <span>이지아</span>
+                                <p>배우</p>
+                            </a>
+                        </li>
+                        <!--                        이영지-->
+                        <li>
+                            <a href="#">
+                                <div class="people_img15 auto">
+                                </div>
+                                <span>이영지</span>
+                                <p>모델</p>
+                            </a>
+                        </li>
+                        <!--                        송가은-->
+                        <li>
+                            <a href="#">
+                                <div class="people_img16 auto">
+                                </div>
+                                <span>송가은</span>
+                                <p>승무원</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+        <!--하단부분-->
+        <footer id="footer">
+            <div class="footer_in">
+                <div class="b_logo"><a href="#"><img src="images/b_logo.png"></a></div>
+                <ul>
+                    <li><a href="#">SPONSORED GUIDE</a></li>
+                    <li><a href="#">1:1 INQULRY</a></li>
+                    <li><a href="#">NOTICE</a></li>
+                    <li><a href="#">VOLUNTERR WORK</a></li>
+                </ul>
+            </div>
+            <!--copy-->
+            <div class="copy">
+                <p>03737 서울특별시 서대문구 충정로 7 구세군빌딩 16-17층<br>
+                    대표전화 : 02-6364-4000 팩스 : 02-6364–4099 이메일 : info@salvationarmy.kr<br>
+                    대표 : CHANG MAN HEE 구세군 한국군국 고유번호 : 102-82-03430<br>
+                    후원문의 : 02.6364.4072
+                </p>
+                <ul>
+                    <li><a href="#"><img src="images/f.png"></a></li>
+                    <li><a href="#"><img src="images/b.png"></a></li>
+                    <li><a href="#"><img src="images/in.png"></a></li>
+                    <li><a href="#"><img src="images/you.png"></a></li>
+                </ul>
+                <p>COPYRIGHE ⓒ 2018 SALVATION ARMY ALL RIGHTS RESERVED.</p>
+            </div>
+        </footer>
+    </div>
+</body></html>

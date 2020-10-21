@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구세군</title>
+    <link href="css/story.css" type="text/css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="js/story.js"></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            mobile_menu();
+        });
+
+        function mobile_menu() {
+            /* 변수 선언 */
+            var $menu = null;
+            var $left_gnb = null; // 영역 전체
+            var $depth1_wrap = null;
+            var $depth1 = null;
+            var $depth1_btn = null;
+
+            /* 시작 함수 */
+            function start() {
+                init();
+                init_event();
+            }
+            /* 변수 초기화 함수 */
+            function init() {
+                $menu = $('.menu2');
+                $left_gnb = $('.left_gnbWrap'); // 영역 전체
+                $depth1_wrap = $('.left_gnb>li');
+                $depth1 = $depth1_wrap.children('ul');
+                $depth1_btn = $depth1_wrap.children('a');
+            }
+            /* 이벤트 함수 */
+            function init_event() {
+
+                /* 모바일 메뉴 버튼 클릭했을때 모바일 메뉴영역 나오게 하기 */
+                $menu.click(function(event) {
+                    event.preventDefault();
+                    $left_gnb.addClass('on');
+                });
+
+                /* x버튼 눌렀을때 모바일 메뉴 닫기 */
+                $('.close').click(function(event) {
+                    event.preventDefault();
+
+                    $left_gnb.removeClass('on');
+
+                    // x버튼 누르면 시간차 약간두고 소메뉴 닫히게 하기
+                    setTimeout(function() {
+                        $depth1_btn.removeClass('on');
+                        $depth1.slideUp();
+                    }, 300)
+                });
+
+                /* depth1의 각메뉴 클릭시 depth2 나오게 하기 */
+                $depth1_btn.click(function(event) {
+                    event.preventDefault();
+                    var $this = $(this);
+                    var $this_ul = $this.siblings('ul');
+
+                    var check = $this.hasClass('on');
+                    if (check) {
+                        $this.removeClass('on');
+                        $this_ul.stop(true, true).slideUp();
+                    } else {
+                        $depth1_btn.removeClass('on');
+                        $depth1.stop().slideUp();
+                        $this.addClass('on');
+                        $this_ul.stop(true, true).slideDown();
+                    }
+                });
+
+                /* 디바이스 크기 변경시 모바일 메뉴영역 숨기기 */
+                $(window).resize(function() {
+                    $left_gnb.removeClass('on');
+                });
+            }
+
+            start(); // 시작 호출
+        }
+    </script>
+
+
+</head>
+
+<body>
+    <div id="wrap">
+        <!--상단-->
+        <header id="header">
+            <div class="header_in">
+                <div class="header_top">
+                    <!--로고-->
+                    <h1 class="logo">
+                        <a href="index.html"><img src="images/logo.png" class="pclogo">
+                            <img src="images/mobile_logo.png" class="m_logo">
+                        </a>
+                    </h1>
+
+                    <!--상단 메뉴-->
+                    <nav class="main_nav">
+                        <ul>
+                            <li><a href="aboutus.html">ABOUT US</a>
+                                <ul class="global">
+                                    <li><a href="aboutus.html">- Who We Are</a></li>
+                                    <li><a href="aboutus.html">- History</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="campaign.html">PARTICIPATION</a>
+                                <ul class="global">
+                                    <li><a href="campaign.html">- 국내기부</a></li>
+                                    <li><a href="campaign.html">- 해외기부</a></li>
+                                    <li><a href="campaign.html">- 캠페인기부</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="people.html">GOOD-PEOPLE</a>
+                                <ul class="global">
+                                    <li><a href="people.html">- 사관/병사</a></li>
+                                    <li><a href="people.html">- 함께하는사람들</a></li>
+                                    <li><a href="people.html">- 홍보대사/자문위원</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="sotry.html">GOOD-STORY</a>
+                                <ul class="global">
+                                    <li><a href="sotry.html">- 후원소식</a></li>
+                                    <li><a href="sotry.html">- 후원절차보고</a></li>
+                                    <li><a href="sotry.html">- 경영보고</a></li>
+                                    <li><a href="sotry.html">- 윤리경영</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#"><span>LOG-IN</span></a></li>
+                            <li><a href="#"><span class="eng_btn">ENGLISH</span></a></li>
+                        </ul>
+                    </nav>
+                    <!--mobile_menu-->
+                    <div class="mobile_menu">
+                        <div class="menu2">
+                            <a href="#"></a>
+                        </div>
+                        <nav class="left_gnbWrap">
+                            <a href="#" class="close"></a>
+                            <ul class="left_gnb">
+                                <li>
+                                    <a href="#">ABOUTY US</a>
+                                    <ul>
+                                        <li><a href="aboutus.html">Who We Are</a></li>
+                                        <li><a href="aboutus.html">History</a></li>
+
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">PARTICIPATION</a>
+                                    <ul>
+                                        <li><a href="campaign.html">국내기부</a></li>
+                                        <li><a href="campaign.html">해외기부</a></li>
+                                        <li><a href="campaign.html">캠페인기부</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">GOOD-PEOPLE</a>
+                                    <ul>
+                                        <li><a href="people.html">사관/병사</a></li>
+                                        <li><a href="people.html">함께하는사람들</a></li>
+                                        <li><a href="people.html">홍보대사/자문위원</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">GOOD-STORY</a>
+                                    <ul>
+                                        <li><a href="sotry.html">후원소식</a></li>
+                                        <li><a href="sotry.html">후원절차보고</a></li>
+                                        <li><a href="sotry.html">경영보고</a></li>
+                                        <li><a href="sotry.html">윤리경영</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <!--이미지 텍스트-->
+                <div class="img_text">
+                    <div class="img_one"></div>
+                    <h2>GOOD<br>
+                        STORY</h2>
+                </div>
+            </div>
+        </header>
+        <!--컨텐츠-->
+        <main id="contents">
+            <!--퀵메뉴-->
+            <section id="q_mn">
+                <div class="q_mn_in">
+                    <ul class="homg_btn">
+                        <li><a href="index.html"><img src="images/home.png"></a></li>
+                        <li class="q_one"><a href="sotry.html">GOOD-STORY<i><img src="images/triangle.png" class="red_btn1"></i>
+                            </a>
+                            <ul class="q_sub_mn1">
+                                <li><a href="aboutus.html">ABOUT US</a></li>
+                                <li><a href="campaign.html">PARTICIPATION</a></li>
+                                <li><a href="people.html">GOOD-PEOPLE</a></li>
+                                <li><a href="sotry.html">GOOD-STORY</a></li>
+                            </ul>
+                        </li>
+                        <li class="q_two"><a href="sotry.html"><span>후원소식</span><i><img src="images/triangle.png" class="red_btn2"></i></a>
+                            <ul class="q_sub_mn2">
+                                <li><a href="sotry.html">후원소식</a></li>
+                                <li><a href="sotry.html">후원결과보고</a></li>
+                                <li><a href="sotry.html">경영보고</a></li>
+                                <li><a href="sotry.html">윤리경영</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <!--기부-->
+            <section id="story">
+                <div class="story_h">
+                    <h2>우리의 나눔으로 변화된 내일의 이야기를 들어보세요!</h2>
+                    <p>“구세군과 함께 마음을 나누는 분들의 따뜻한 이야기를 전합니다.”</p>
+                </div>
+                <div class="story_tab">
+                    <ul>
+                        <li class="allclick"><a href="#">전체</a></li>
+                        <li class="ingclick"><a href="#">기업</a></li>
+                        <li class="endclick"><a href="#">개인</a></li>
+                    </ul>
+                </div>
+
+                <!--list-->
+                <section class="list_set">
+                    <ul>
+                        <!--1-->
+                        <li class="list1 ing">
+                            <div class="list_img">
+                                <img src="images/story_img1.png">
+                                <div class="list_box">
+                                    <p>기업</p>
+                                </div>
+                            </div>
+                            <div class="list_text">
+                                <p>서초구와 함께하는 환경정화 프로젝트</p>
+                                <p>가을을 맞아, 서초구와 함께 환경정화 프로젝트를 진행하였습니다.</p>
+                            </div>
+
+                        </li>
+                        <!--2-->
+                        <li class="list1 ing">
+                            <div class="list_img">
+                                <img src="images/story_img2.png">
+                                <div class="list_box">
+                                    <p>기업</p>
+                                </div>
+                            </div>
+                            <div class="list_text">
+                                <p>해피카드, 사회복지공동모금회 [2018 소외계층 설나눔]</p>
+                                <p>소외된 이웃과 시설의 생활자들에게 설 명절 선물을 나눔으로</p>
+                            </div>
+
+                        </li>
+                        <!--3-->
+                        <li class="list1 ing">
+                            <div class="list_img">
+                                <img src="images/story_img3.png">
+                                <div class="list_box">
+                                    <p>기업</p>
+                                </div>
+                            </div>
+                            <div class="list_text">
+                                <p>스마일병원‘봉사는 즐겁다’이야기</p>
+                                <p>저희는 소외계층을 위한 찾아가는 의료봉사 활동을 하고있습니다.</p>
+                            </div>
+
+                        </li>
+                        <!--4-->
+                        <li class="list1 ing">
+                            <div class="list_img">
+                                <img src="images/story_img4.png">
+                                <div class="list_box">
+                                    <p>기업</p>
+                                </div>
+                            </div>
+                            <div class="list_text">
+                                <p>희망재단과 함께하는 행복나눔, 물품나눔</p>
+                                <p>취약계층에게 어려운 생활물품을 나눠드리며,삶의 질을 향상시키고자봉사활동을 하고있습니다.</p>
+                            </div>
+
+                        </li>
+                        <!--5-->
+                        <li class="list1 ing">
+                            <div class="list_img">
+                                <img src="images/story_img5.png">
+                                <div class="list_box">
+                                    <p>기업</p>
+                                </div>
+                            </div>
+                            <div class="list_text">
+                                <p>가화맘사성 캠페인</p>
+                                <p>노바티스 코리아와 함께하는 여성 암환우를 위한 캠페인</p>
+                            </div>
+
+                        </li>
+                        <!--6-->
+                        <li class="list1 noting">
+                            <div class="list_img">
+                                <img src="images/story_img6.png">
+                                <div class="list_box">
+                                    <p>개인</p>
+                                </div>
+                            </div>
+                            <div class="list_text">
+                                <p>대전혜생원 ‘즐거운 녀석들’ 재능봉사 후원팀 이야기</p>
+                                <p>처음 어떻게 후원을 시작하게 되셨나요? 구세군자선냄비는 어릴 때부터 익히 알고 있었습니다.</p>
+                            </div>
+
+                        </li>
+                        <!--7-->
+                        <li class="list1 noting">
+                            <div class="list_img">
+                                <img src="images/story_img7.png">
+                                <div class="list_box">
+                                    <p>개인</p>
+                                </div>
+                            </div>
+                            <div class="list_text">
+                                <p>“한국에 대해 알고싶어요”</p>
+                                <p>한국에 대한 이해및 민주시민으로서의 가치와 태도를 증진을 위한'찾아가는 교육봉사' 입니다.</p>
+                            </div>
+
+                        </li>
+                        <!--8-->
+                        <li class="list1 noting">
+                            <div class="list_img">
+                                <img src="images/story_img8.png">
+                                <div class="list_box">
+                                    <p>개인</p>
+                                </div>
+                            </div>
+                            <div class="list_text">
+                                <p>지진피해 아동 - 사랑의 도시락 배달</p>
+                                <p>지진으로 인해 피해를 입은 지역아동들이 굶주리지 않고, 꿈을 키워나갈 수 있기를 기대합니다</p>
+                            </div>
+
+                        </li>
+                        <!--9-->
+                        <li class="list1 noting">
+                            <div class="list_img">
+                                <img src="images/story_img9.png">
+                                <div class="list_box">
+                                    <p>개인</p>
+                                </div>
+                            </div>
+                            <div class="list_text">
+                                <p>캄보디아에서 만난 작은천사</p>
+                                <p>학습환경이 열위한 캄보디아 작은 천사들을 위한 재능나눔</p>
+                            </div>
+
+                        </li>
+                    </ul>
+                    <!--리스트 버튼-->
+                    <div class="list_btn">
+                        <ul>
+                            <li class="on"><a href="#">1</a></li>
+                            <li class="two"><a href="#">2</a></li>
+                            <li><a href="#"><img src="images/list_next.png"></a></li>
+
+                        </ul>
+                    </div>
+
+                </section>
+            </section>
+        </main>
+        <!--하단부분-->
+        <footer id="footer">
+            <div class="footer_in">
+                <div class="b_logo"><a href="#"><img src="images/b_logo.png"></a></div>
+                <ul>
+                    <li><a href="#">SPONSORED GUIDE</a></li>
+                    <li><a href="#">1:1 INQULRY</a></li>
+                    <li><a href="#">NOTICE</a></li>
+                    <li><a href="#">VOLUNTERR WORK</a></li>
+                </ul>
+            </div>
+            <!--copy-->
+            <div class="copy">
+                <p>03737 서울특별시 서대문구 충정로 7 구세군빌딩 16-17층<br>
+                    대표전화 : 02-6364-4000 팩스 : 02-6364–4099 이메일 : info@salvationarmy.kr<br>
+                    대표 : CHANG MAN HEE 구세군 한국군국 고유번호 : 102-82-03430<br>
+                    후원문의 : 02.6364.4072
+                </p>
+                <ul>
+                    <li><a href="#"><img src="images/f.png"></a></li>
+                    <li><a href="#"><img src="images/b.png"></a></li>
+                    <li><a href="#"><img src="images/in.png"></a></li>
+                    <li><a href="#"><img src="images/you.png"></a></li>
+                </ul>
+                <p>COPYRIGHE ⓒ 2018 SALVATION ARMY ALL RIGHTS RESERVED.</p>
+            </div>
+        </footer>
+    </div>
+</body></html>

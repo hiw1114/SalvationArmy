@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구세군</title>
+    <link href="css/main_style.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/slick.css">
+    <link rel="stylesheet" type="text/css" href="css/slick2.css">
+    <link rel="stylesheet" type="text/css" href="css/slick-theme.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="js/s.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            mobile_menu();
+        });
+
+        function mobile_menu() {
+            /* 변수 선언 */
+            var $menu = null;
+            var $left_gnb = null; // 영역 전체
+            var $depth1_wrap = null;
+            var $depth1 = null;
+            var $depth1_btn = null;
+
+            /* 시작 함수 */
+            function start() {
+                init();
+                init_event();
+            }
+            /* 변수 초기화 함수 */
+            function init() {
+                $menu = $('.menu2');
+                $left_gnb = $('.left_gnbWrap'); // 영역 전체
+                $depth1_wrap = $('.left_gnb>li');
+                $depth1 = $depth1_wrap.children('ul');
+                $depth1_btn = $depth1_wrap.children('a');
+            }
+            /* 이벤트 함수 */
+            function init_event() {
+
+                /* 모바일 메뉴 버튼 클릭했을때 모바일 메뉴영역 나오게 하기 */
+                $menu.click(function(event) {
+                    event.preventDefault();
+                    $left_gnb.addClass('on');
+                });
+
+                /* x버튼 눌렀을때 모바일 메뉴 닫기 */
+                $('.close').click(function(event) {
+                    event.preventDefault();
+
+                    $left_gnb.removeClass('on');
+
+                    // x버튼 누르면 시간차 약간두고 소메뉴 닫히게 하기
+                    setTimeout(function() {
+                        $depth1_btn.removeClass('on');
+                        $depth1.slideUp();
+                    }, 300)
+                });
+
+                /* depth1의 각메뉴 클릭시 depth2 나오게 하기 */
+                $depth1_btn.click(function(event) {
+                    event.preventDefault();
+                    var $this = $(this);
+                    var $this_ul = $this.siblings('ul');
+
+                    var check = $this.hasClass('on');
+                    if (check) {
+                        $this.removeClass('on');
+                        $this_ul.stop(true, true).slideUp();
+                    } else {
+                        $depth1_btn.removeClass('on');
+                        $depth1.stop().slideUp();
+                        $this.addClass('on');
+                        $this_ul.stop(true, true).slideDown();
+                    }
+                });
+
+                /* 디바이스 크기 변경시 모바일 메뉴영역 숨기기 */
+                $(window).resize(function() {
+                    $left_gnb.removeClass('on');
+                });
+            }
+
+            start(); // 시작 호출
+        }
+    </script>
+
+    <style type="text/css">
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .slider {
+            width: 100%;
+        }
+
+        /*people1*/
+
+        .people1 {
+            width: 100%;
+            height: 327px;
+            background-image: url(./images/people1.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .people1:hover {
+            background-image: url(./images/color1.png);
+            transition-duration: 0.5s;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        /*people2*/
+        .people2 {
+            width: 100%;
+            height: 327px;
+            background-image: url(./images/people2.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .people2:hover {
+            background-image: url(./images/color2.png);
+            transition-duration: 0.5s;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        /*people3*/
+        .people3 {
+            width: 100%;
+            height: 327px;
+            background-image: url(./images/people3.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .people3:hover {
+            background-image: url(./images/color3.png);
+            transition-duration: 0.5s;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        /*people4*/
+        .people4 {
+            width: 100%;
+            height: 327px;
+            background-image: url(./images/people4.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .people4:hover {
+            background-image: url(./images/color4.png);
+            transition-duration: 0.5s;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        /*people5*/
+        .people5 {
+            width: 100%;
+            height: 327px;
+            background-image: url(./images/people5.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .people5:hover {
+            background-image: url(./images/color5.png);
+            transition-duration: 0.5s;
+        }
+
+        /*people6*/
+        .people6 {
+            width: 100%;
+            height: 327px;
+            background-image: url(./images/people6.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .people6:hover {
+            background-image: url(./images/color6.png);
+            transition-duration: 0.5s;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        /*people7*/
+        .people7 {
+            width: 100%;
+            height: 327px;
+            background-image: url(./images/people7.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .people7:hover {
+            background-image: url(./images/color7.png);
+            transition-duration: 0.5s;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        /*people8*/
+        .people8 {
+            width: 100%;
+            height: 327px;
+            background-image: url(./images/people8.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .people8:hover {
+            background-image: url(./images/color8.png);
+            transition-duration: 0.5s;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        /*people9*/
+        .people9 {
+            width: 100%;
+            height: 327px;
+            background-image: url(./images/people9.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .people9:hover {
+            background-image: url(./images/color9.png);
+            transition-duration: 0.5s;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        /*people10*/
+        .people10 {
+            width: 100%;
+            height: 327px;
+            background-image: url(./images/people10.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .people10:hover {
+            background-image: url(./images/color10.png);
+            transition-duration: 0.5s;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        /*people11*/
+        .people11 {
+            width: 100%;
+            height: 327px;
+            background-image: url(./images/people11.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .people11:hover {
+            background-image: url(./images/color11.png);
+            transition-duration: 0.5s;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        /*people12*/
+        .people12 {
+            width: 100%;
+            height: 327px;
+            background-image: url(./images/people12.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .people12:hover {
+            background-image: url(./images/color12.png);
+            transition-duration: 0.5s;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        /*people13*/
+        .people13 {
+            width: 100%;
+            height: 327px;
+            background-image: url(./images/people13.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .people13:hover {
+            background-image: url(./images/color13.png);
+            transition-duration: 0.5s;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        /*people14*/
+        .people14 {
+            width: 100%;
+            height: 327px;
+            background-image: url(./images/people14.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .people14:hover {
+            background-image: url(./images/color14.png);
+            transition-duration: 0.5s;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        /*people15*/
+        .people15 {
+            width: 100%;
+            height: 327px;
+            background-image: url(./images/people15.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .people15:hover {
+            background-image: url(./images/color15.png);
+            transition-duration: 0.5s;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        /*people16*/
+        .people16 {
+            width: 100%;
+            height: 327px;
+            background-image: url(./images/people16.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .people16:hover {
+            background-image: url(./images/color16.png);
+            transition-duration: 0.5s;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+
+        .slick-slide {
+            margin: 0px 20px;
+        }
+
+        .slick-slide img {
+            width: 100%;
+        }
+
+        .slick-prev:before,
+        .slick-next:before {
+            color: black;
+        }
+
+
+        .slick-slide {
+            transition: all ease-in-out .3s;
+
+        }
+
+        .slick-active {
+            opacity: 1;
+        }
+
+        .slick-current {
+            opacity: 1;
+        }
+
+        @media (max-width:1297px) {
+
+            .people1,
+            .people2,
+            .people3,
+            .people4,
+            .people5,
+            .people6,
+            .people7,
+            .people8,
+            .people9,
+            .people10,
+            .people11,
+            .people12,
+            .people13,
+            .people14,
+            .people15,
+            .people16 {
+                background-position: center
+            }
+        }
+
+        @media (max-width:767px) {
+
+            .people1,
+            .people2,
+            .people3,
+            .people4,
+            .people5,
+            .people6,
+            .people7,
+            .people8,
+            .people9,
+            .people10,
+            .people11,
+            .people12,
+            .people13,
+            .people14,
+            .people15,
+            .people16 {
+                background-size: contain;
+                height: 180px
+            }
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <div id="wrap">
+        <!--상단-->
+        <header id="header">
+            <div class="slideBox">
+                <div class="slideimg1 show"></div>
+                <div class="slideimg2 show"></div>
+                <div class="slideimg3 show"></div>
+            </div>
+            <div class="box">
+                <div class="time_bar"></div>
+            </div>
+            <div class="header_in">
+                <div class="header_top">
+                    <!--로고-->
+                    <h1 class="logo">
+                        <a href="index.html"><img src="images/logo.png" class="pclogo">
+                            <img src="images/mobile_logo.png" class="m_logo">
+                        </a>
+                    </h1>
+                    <!--상단 메뉴-->
+                    <nav class="main_nav">
+                        <ul>
+                            <li><a href="aboutus.html">ABOUT US</a>
+                                <ul class="global">
+                                    <li><a href="aboutus.html">- Who We Are</a></li>
+                                    <li><a href="aboutus.html">- History</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="campaign.html">PARTICIPATION</a>
+                                <ul class="global">
+                                    <li><a href="campaign.html">- 국내기부</a></li>
+                                    <li><a href="campaign.html">- 해외기부</a></li>
+                                    <li><a href="campaign.html">- 캠페인기부</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="people.html">GOOD-PEOPLE</a>
+                                <ul class="global">
+                                    <li><a href="people.html">- 사관/병사</a></li>
+                                    <li><a href="people.html">- 함께하는사람들</a></li>
+                                    <li><a href="people.html">- 홍보대사/자문위원</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="sotry.html">GOOD-STORY</a>
+                                <ul class="global">
+                                    <li><a href="sotry.html">- 후원소식</a></li>
+                                    <li><a href="sotry.html">- 후원절차보고</a></li>
+                                    <li><a href="sotry.html">- 경영보고</a></li>
+                                    <li><a href="sotry.html">- 윤리경영</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#"><span>LOG-IN</span></a></li>
+                            <li><a href="#"><span class="eng_btn">ENGLISH</span></a></li>
+                        </ul>
+                    </nav>
+                    <!--mobile_menu-->
+                    <div class="mobile_menu">
+                        <div class="menu2">
+                            <a href="#"></a>
+                        </div>
+                        <nav class="left_gnbWrap">
+                            <a href="#" class="close"></a>
+                            <ul class="left_gnb">
+                                <li>
+                                    <a href="#">ABOUTY US</a>
+                                    <ul>
+                                        <li><a href="aboutus.html">Who We Are</a></li>
+                                        <li><a href="aboutus.html">History</a></li>
+
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">PARTICIPATION</a>
+                                    <ul>
+                                        <li><a href="campaign.html">국내기부</a></li>
+                                        <li><a href="campaign.html">해외기부</a></li>
+                                        <li><a href="campaign.html">캠페인기부</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">GOOD-PEOPLE</a>
+                                    <ul>
+                                        <li><a href="people.html">사관/병사</a></li>
+                                        <li><a href="people.html">함께하는사람들</a></li>
+                                        <li><a href="people.html">홍보대사/자문위원</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">GOOD-STORY</a>
+                                    <ul>
+                                        <li><a href="sotry.html">후원소식</a></li>
+                                        <li><a href="sotry.html">후원절차보고</a></li>
+                                        <li><a href="sotry.html">경영보고</a></li>
+                                        <li><a href="sotry.html">윤리경영</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                </div>
+                <!--이미지 텍스트-->
+                <div class="slide_text">
+                    <div class="imgtext">
+                        <span>LONELY CHILDREN,<br>
+                            WE SHOULD BE INTERESTED.</span>
+                        <p>외로운 아이들, 우리들의 관심이 필요합니다.<br>
+                            손을 뻗어, 아이들에게 행복을 만들어주세요.</p>
+                        <div class="header_btn"><a href="#">TAKE A CLOSER LOOK</a></div>
+                    </div>
+
+                    <div class="imgtext">
+                        <span>Campaign for Female Cancer <br>
+                            Patients with Novartis Korea.</span>
+                        <p>노바티스 코리아와 함께하는,<br>
+                            여성 암환우를 위한 캠페인</p>
+                        <div class="header_btn"><a href="#">TAKE A CLOSER LOOK</a></div>
+                    </div>
+
+
+                    <div class="imgtext">
+                        <span>
+                            Please make a hopeful future<br> for our children now.</span>
+                        <p>꿈을 잃어버린 우리아이들에게<br>
+                            희망찬 미래를 만들어 주세요</p>
+                        <div class="header_btn"><a href="#">TAKE A CLOSER LOOK</a></div>
+                    </div>
+
+                </div>
+                <!--동그라미-->
+                <div class="one">
+
+                    <img src="images/one2.png" class="slide_one">
+                    <img src="images/one1.png" class="slide_one">
+                    <img src="images/one1.png" class="slide_one">
+
+                </div>
+            </div>
+
+        </header>
+        <!--컨텐츠-->
+        <!--1-->
+        <section id="sponsor">
+            <div class="sponsor_h">
+                <h2>TO SPONSOR</h2>
+                <p>도움이 필요한 곳에 구세군이 있습니다.<br>우리는 섬겨야 할 지역사회를 찾아 무엇이 필요한지를 고민합니다.<br>무엇이 문제인지, 어떻게 하면 극복할 수 있을지를 연구하며 선을 이루고자 노력합니다.</p>
+            </div>
+            <!--sponsor-->
+            <div class="sponsor_list">
+                <ul>
+                    <li>
+                        <a href="#" class="country_link">
+                            <div class="country_img"> <span>COUNTRY</span>
+                            </div>
+                        </a>
+                        <div class="countr_text">
+                            <h4>마음을 잇다_국내아동 1:1 결연</h4>
+                            <div class="country_bar"></div>
+                            <p>도움이 필요한 아동들이 차별없이 내일의 꿈을 꾸도록,<br>아이들의 손을 잡아주세요!<br>후원은 아이들의 내일을 바꾸는 시작입니다.</p>
+                        </div>
+                    </li>
+                    <!--overseas-->
+                    <li>
+                        <a href="#" class="overseas_link">
+                            <div class="overseas_img"> <span>OVERSEAS</span>
+                            </div>
+                        </a>
+                        <div class="overseas_text">
+                            <h4>바라보다_해외아동 1:1결연 </h4>
+                            <div class="overseas_bar"></div>
+                            <p>비록 다른 환경과 상황속에 있지만,<br>같은 꿈을 꾸며 같은 길을 걸어가는<br>그 아이들의 삶을 바라보다, 담아보다, 나누다</p>
+                        </div>
+                    </li>
+                    <!--campain-->
+                    <li>
+                        <a href="#" class="campaign_link">
+                            <div class="campaign_img">
+                                <span>CAMPAIGN</span>
+                            </div>
+                        </a>
+                        <div class="campaign_text">
+                            <h4>인연을 맺다_캠페인 결연</h4>
+                            <div class="campaign_bar"></div>
+                            <p>"당신의 따스한 나눔을 통해 변화가 시작되고,<br>우리의 작은 관심을 통해 아이들의 꿈이 싹트기 시작합니다.<br>아이들의 꿈에 열매가 맺혀지도록 함께해주세요!</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <!--        좋은사람들-->
+        <section id="people">
+            <div class="people_h">
+                <h2>GOOD-PEOPLE</h2>
+                <p>좋은 사람들이 함께 모여 세상을 밝히는 힘,<br>우리는 구세군 입니다.</p>
+            </div>
+            <div class="people_list">
+                <section class="regular slider">
+
+                    <a href="#">
+                        <div class="people1">
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="people2">
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="people3">
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="people4">
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="people5">
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="people6">
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="people7">
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="people8">
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="people9">
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="people10">
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="people11">
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="people12">
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="people13">
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="people14">
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="people15">
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="people16">
+                        </div>
+                    </a>
+                </section>
+            </div>
+
+        </section>
+        <!--        좋은이야기-->
+        <section id="story">
+            <div class="story_h">
+                <h2>GOOD-STOTY</h2>
+                <p>“구세군과 함께 마음을 나누는 분들의 따뜻한 이야기를 전합니다.”</p>
+            </div>
+            <div class="story_left">
+                <div class="story_img">
+                    <a href="#"><img src="images/story1.jpg"></a>
+                    <a href="#"><img src="images/main_story3.jpg"></a>
+                    <a href="#"><img src="images/main_story4.jpg"></a>
+                    <a href="#"><img src="images/main_story5.jpg"></a>
+                    <a href="#"><img src="images/main_story2.jpg"></a>
+                </div>
+                <div class="left_text">
+                    <div class="panel" id="panel1-1">
+                        <h3>전남 수해지역 긴급구호</h3>
+                        <p>전남 구례 수해 지역 긴급구호2020. 8.9. ~ 기록적인 폭우로 대규모 수해를 입은 전남 구례 지역 긴급구호를 <br>
+                            위해 구세군 긴급구호팀이 피해당일 긴급구호 물품을 가지고 출발하여 피해현장에서 1,100여명의 수재민</p>
+                    </div>
+                    <div class="panel" id="panel1-2">
+                        <h3>한국화이자업존㈜ 소아 심장병 환우 기부금 전달식</h3>
+                        <p>한국화이자업존㈜ ‘동심을 부탁해’ 캠페인- 소아 심장병 환우 위한 기부금 1,000만원 기부 - 2020.06.29.<br>한국화이자업존에서 5월 가정의 달을 맞아 가정 형편이 어려운 소아 심장병 환우들을 돕고자 한 달간 임직원 및 의료진이 마음을 모아총 1,000만원의 기부금을 구세군자선냄비본부에 전달해주셨습니다!</p>
+                    </div>
+                    <div class="panel" id="panel1-3">
+                        <h3>SK증권 긴급재난지원금 나눔 전달식 -우리동네나눔운동</h3>
+                        <p>SK증권 우리동네 나눔더하기 캠페인 -SK임직원긴급재난지원금 기부- 2020. 6.4 구세군자선냄비본부는 코로나<br> 19 여파로 어려움을 겪고 있는 소상공인과 취약계층 상생을 위한 우리동네 나눔 더하기 캠페인을 전개중입니다.</p>
+                    </div>
+                    <div class="panel" id="panel1-4">
+                        <h3>구세군자선냄비본부 x 농협 농산물 꾸러미 세트</h3>
+                        <p>구세군자선냄비본부 x 농협 농산물 꾸러미 세트 전달식2020.5.21 구세군자선냄비본부 x 농협 농산물<br> 꾸러미세트 전달식이 경기도 고양시 고봉동 2통 마을회관에서 열렸습니다.</p>
+                    </div>
+                    <div class="panel" id="panel1-5">
+                        <h3>구세군자선냄비본부 x 소상공인연합회 우리동네</h3>
+                        <p>코로나19 위기 극복을 위한 '내 마음을 담다' 캠페인 - 서울 다모아자동차 소속 버스 운전기사를 위한<br> 우리금융 영양키트 전달식-2020.09.10. 코로나19 위기 극복을 위한 마음 나눔 캠페인 “내 마음을 담다”를 통해 우리금융그룹의 후원으로 영양키트를 제작하여 다모아자동차 소속 버스 운전기사님께 직접 전달하였습니다.</p>
+                    </div>
+
+                    <div class="story_btn"><a href="#">TAKE A CLOSER LOOK</a></div>
+                    <div class="mobile_story_btn">
+                        <a href="#"><img src="images/mobile_one.png"></a>
+                        <a href="#"><img src="images/mobile_one2.png"></a>
+                        <a href="#"><img src="images/mobile_one2.png"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="story_right">
+                <ul>
+                    <li><a href="#">
+                            <div class="date">
+                                <span>06</span>
+                                <p>2020.08</p>
+                            </div>
+                            <div class="check">
+                                <img src="images/check.png">
+                            </div>
+                            <div class="right_text">
+                                <h4 class="top_border">전남 수해지역 긴급구호</h4>
+                                <p>전남 구례 수해 지역 긴급구호2020. 8.9. ~ 기록적인 폭우로 대규모<br>
+                                    수해를 입은 전남 구례 지역 긴급구호를 위해 구세군 긴급구호팀이 피해당일 긴급구호 물품을 가지고 출발하여
+                                    피해현장에서 1,100여명의 수재민들에게 세 끼 식사를 제공하고 있습니다.
+                                    피해 지역 주민들은
+                                    폭우로 인한 단수 및 단전으로 힘든 시간을 보내고 있으며,
+                                    계속해서 비소식이 있는 상황이므로 추가 침수 피해와 복구 지연으로
+                                    삶의 터전이 점점 더 어려운 상황으로 치닫고 있습니다.
+                                    구세군 전라지방의 사관 및 자원봉사자들이 힘을 모아
+                                    최선을 다해 식사를 제공하고 있지만 여전히 수재민들을 위한 생활용품이나
+                                    위생용품은 지원이 필요한 상황입니다.
+                                    구세군 긴급구호 팀은 현장이 안정될 때까지 긴급구호 활동을 진행할 예정입니다.
+                                    많은 관심과 응원 부탁드립니다. </p>
+                            </div>
+                        </a>
+                    </li>
+                    <li><a href="#">
+                            <div class="date">
+                                <span>06</span>
+                                <p>2020.07</p>
+                            </div>
+                            <div class="check">
+                                <img src="images/check.png">
+                            </div>
+                            <div class="right_text">
+                                <h4>한국화이자업존㈜ 소아 심장병 환우 기부금 전달식</h4>
+                                <p>한국화이자업존㈜ ‘동심을 부탁해’ 캠페인- 소아 심장병 환우 위한 <br>
+                                    기부금 1,000만원 기부 - 2020.06.29. 한국화이자업존에서 5월 가정의 달을 맞아
+
+                                    가정 형편이 어려운 소아 심장병 환우들을 돕고자
+
+                                    한 달간 임직원 및 의료진이 마음을 모아
+
+                                    총 1,000만원의 기부금을 구세군자선냄비본부에 전달해주셨습니다!</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li><a href="#">
+                            <div class="date">
+                                <span>15</span>
+                                <p>2020.6</p>
+                            </div>
+                            <div class="check">
+                                <img src="images/check.png">
+                            </div>
+                            <div class="right_text">
+                                <h4>SK증권 긴급재난지원금 나눔 전달식 -우리동네나눔더하기 캠페인</h4>
+                                <p>구세군자선냄비본부는
+
+                                    코로나 19 여파로 어려움을 겪고 있는 소상공인<br>과 취약계층 상생을 위한
+                                    우리동네 나눔 더하기 캠페인을 전개중입니다.
+                                    이 캠페인에 SK증권 임직원들이 함께 해주셨는데요,
+                                    코로나19 정부재난지원금을 십시일반 모아 우리동네 나눔더하기 캠페인에 동참해주셨습니다!
+                                </p>
+                            </div>
+                        </a>
+                    </li>
+                    <li><a href="#">
+                            <div class="date">
+                                <span>27</span>
+                                <p>2020.05</p>
+                            </div>
+                            <div class="check">
+                                <img src="images/check.png">
+                            </div>
+                            <div class="right_text">
+                                <h4>구세군자선냄비본부 x 농협
+                                    농산물 꾸러미 세트 전달식</h4>
+                                <p>구세군자선냄비본부 x 농협 농산물 꾸러미 세트 전달식이
+
+                                    경기도<br> 고양시 고봉동 2통 마을회관에서 열렸습니다.농산물 꾸러미는 코로나19 장기화로 인해 판로에 어려움을 겪는
+
+                                    상추, 참외, 버섯 등 다양한 친환경 농산물들로 꾸려졌습니다.
+                                    이번 전달은 3회차 전달이었으며 총 5회를 걸쳐
+                                    1억 원 상당의 우리 친환경 농산물 꾸러미를
+                                    전국 방방곡곡 어려운 농촌 소외계층에게 전달할 예정입니다.
+                                </p>
+                            </div>
+                        </a>
+                    </li>
+                    <li><a href="#">
+                            <div class="date">
+                                <span>19</span>
+                                <p>2020.04</p>
+                            </div>
+                            <div class="check">
+                                <img src="images/check.png">
+                            </div>
+                            <div class="right_text">
+                                <h4>구세군자선냄비본부 x 소상공인연합회 우리동네 나눔더하기</h4>
+                                <p>
+                                    캠페인 업무협약식2020.5.19 구세군자선냄비본부와 소상공인연합회<br>는 구세군자선냄비본부와 소상공인연합회는 코로나19로 인해
+                                    어려움을 겪고 있는 소상공인들과 취약계층들을 돕기 위한
+                                    우리동네 나눔 더하기 공동캠페인을 위한 업무협약을 진행하였습니다.</p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <!--운영보고-->
+        <section id="detailsr">
+            <div class="detailsr_h">
+                <h2>DETAILS OF ACTIVITY</h2>
+                <p>“우리의 나눔으로 변화된 내일의 이야기를 들어보세요!”</p>
+            </div>
+            <div class="detals_left">
+                <a href="#"><img src="images/detals1.jpg"></a>
+            </div>
+            <div class="detals_right">
+                <h4># ACTING FIGURE</h4>
+
+                <section class="center slider">
+                    <div>
+                        <img src="images/detals5.jpg">
+                        <p>전남지역 긴급구호 키트 제작</p>
+                    </div>
+                    <div>
+                        <img src="images/detals3.jpg" class="mom">
+                        <p>MOM편한꿈다락_꿈이룸콘서트</p>
+                    </div>
+                    <div>
+                        <img src="images/detals4.jpg">
+                        <p>전남구례 수해지역 긴급구호</p>
+                    </div>
+                    <div>
+                        <img src="images/detals2.jpg">
+                        <p>휘슬러 코리아-나눔정류장 전달실</p>
+                    </div>
+
+                </section>
+
+            </div>
+        </section>
+        <!--온라인모금-->
+        <section id="online">
+            <div class="online_in">
+                <div class="online_h">
+                    <h2>DETAILS OF ACTIVITY</h2>
+                    <p>온라인 모금신청은 국내 및 해외에 긴급하고 직접적인 도움이 필요한<br>
+                        복지사각지대에 놓여 있는 소외된 이웃들을 발굴하여 꼭 필요한 도움을 전하고 있습니다.<br>
+                        대상자에게 직접 달려가 필요를 파악하고 전문적인 계획을 통해 문제 진단과
+                        온라인 펀딩을 통해 해결 방안을 제시하여 위기 가정의 회복을 돕습니다.</p>
+                    <div class="online_text">
+                        <p><span>*</span>꼭 작성해주세요.</p>
+                        <div class="email">
+                            <ul>
+                                <li><span>*</span>메일주소</li>
+                                <li><span>*</span>이름</li>
+                                <li><span>*</span>연락처</li>
+                            </ul>
+                            <div class="online_btn"><a href="#">APPLY NOW</a></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--하단부분-->
+        <footer id="footer">
+            <div class="footer_in">
+                <div class="b_logo"><a href="#"><img src="images/b_logo.png"></a></div>
+                <ul>
+                    <li><a href="#">SPONSORED GUIDE</a></li>
+                    <li><a href="#">1:1 INQULRY</a></li>
+                    <li><a href="#">NOTICE</a></li>
+                    <li><a href="#">VOLUNTERR WORK</a></li>
+                </ul>
+            </div>
+            <!--copy-->
+            <div class="copy">
+                <p>03737 서울특별시 서대문구 충정로 7 구세군빌딩 16-17층<br>
+                    대표전화 : 02-6364-4000 팩스 : 02-6364–4099 이메일 : info@salvationarmy.kr<br>
+                    대표 : CHANG MAN HEE 구세군 한국군국 고유번호 : 102-82-03430<br>
+                    후원문의 : 02.6364.4072
+                </p>
+                <ul>
+                    <li><a href="#"><img src="images/f.png"></a></li>
+                    <li><a href="#"><img src="images/b.png"></a></li>
+                    <li><a href="#"><img src="images/in.png"></a></li>
+                    <li><a href="#"><img src="images/you.png"></a></li>
+                </ul>
+                <p>COPYRIGHE ⓒ 2018 SALVATION ARMY ALL RIGHTS RESERVED.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/slick.js" type="text/javascript" charset="utf-8"></script>
+
+    <script type="text/javascript">
+        $(document).on('ready', function() {
+
+            $(".center").slick({
+                dots: true,
+                infinite: true,
+                centerMode: true,
+                slidesToShow: 2,
+                slidesToScroll: 1
+            });
+
+            if (window.outerWidth <= 768) {
+                $(".regular").slick({
+                    dots: true,
+                    infinite: true,
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                });
+            } else {
+                $(".regular").slick({
+                    dots: true,
+                    infinite: true,
+                    slidesToShow: 4,
+                    slidesToScroll: 4
+                });
+            }
+
+            /*
+                        var width_size = window.outerWidth;
+
+                        if (width_size <= 769) {
+                            console.log('리사이징')
+                            $(".center").slick({
+                                dots: true,
+                                infinite: true,
+                                centerMode: true,
+                                slidesToShow: 1,
+                                slidesToScroll: 1
+                            });
+
+                        } else {
+                            $(".center").slick({
+                                dots: true,
+                                infinite: true,
+                                centerMode: true,
+                                slidesToShow: 2,
+                                slidesToScroll: 1
+                            });
+                        }
+            */
+        });
+    </script>
+</body></html>
